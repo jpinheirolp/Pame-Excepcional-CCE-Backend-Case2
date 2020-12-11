@@ -1,4 +1,5 @@
 from ..extensions import db
+import datetime
 
 class Usuario(db.Model):
     
@@ -11,9 +12,11 @@ class Usuario(db.Model):
     telefone = db.Column(db.String(15),nullable = False, unique = True)
     email = db.Column(db.String(50),nullable = False, unique = True)
     
-    #data_criacao_perfil = db.Column(db.Date(),nullable = False)
+    #data_criacao_perfil = db.Column(db.DateTime,default = datetime.datetime.now())
     #Posts = db.relationship('Post', backref='usuario')
     #Comentarios = db.relationship('Comentario', backref='usuario')
+    #Enquetes = db.relationship('Enquete', backref='usuario')
+    #Respostas = db.relationship('Resposta_Enquete', backref='usuario')
 
     def json(self):
         return {

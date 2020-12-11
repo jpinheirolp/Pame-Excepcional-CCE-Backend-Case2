@@ -1,4 +1,5 @@
 from ..extensions import db
+import datetime
 
 class Comentario(db.Model):
     

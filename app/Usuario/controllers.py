@@ -35,6 +35,9 @@ def index():
         if ( not(isinstance(email,str))):
             return {"error": "tipagem errada"}, 400
 
+        if Usuario.query.filter_by(telefone=telefone).first():
+            return {"error": "esse telefone já existe"},400
+
         usuario = Usuario(
             nome = nome,
             senha = senha,
