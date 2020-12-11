@@ -9,7 +9,7 @@ class Post(db.Model):
     localizacao = db.Column(db.String(40),default = "Não informado")
     descricao = db.Column(db.String(200),default = "descrição")
     imagem = db.Column(db.String(50),nullable = False) # ainda não sei como colocar uma imagem
-    data_post = db.Column(db.DateTime(),nullable = False)
+    data_post = db.Column(db.DateTime(),default = datetime.datetime.now())
     
     usuario_post = db.Column(db.Integer, db.ForeignKey('usuario.id_usuario'),nullable = False)
     Comentarios = db.relationship('Comentario', backref='post')

@@ -1,6 +1,8 @@
 from flask import Flask
 from .config import Config
 from .extensions import db, migrate
+from .Usuario.controllers import usuario_api
+
 from .Comentario.model import Comentario
 from .Enquete.model import Enquete
 from .Post.model import Post
@@ -12,6 +14,8 @@ def create_app():
     app.config.from_object(Config)
     
     db.init_app(app)
-    migrate.init_app(app)
+    migrate.init_app(app,db)
+
+    app.register_blueprint(usuario_api)
 
     return app
